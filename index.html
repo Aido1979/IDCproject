@@ -30,7 +30,6 @@
   }
   .screen.hidden { transform: translateX(100%); opacity: 0; pointer-events: none; }
 
-  /* MASTHEAD */
   .masthead {
     background: var(--surface); border-bottom: 1px solid var(--border);
     padding: 14px 18px 12px;
@@ -53,7 +52,6 @@
     letter-spacing: 0.1em; text-transform: uppercase; color: var(--green);
   }
 
-  /* GRID */
   #gridScreen .scroll-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 14px 14px 24px; }
   .person-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
@@ -71,21 +69,10 @@
   .person-tile:nth-child(5) { animation-delay:0.20s }
   .person-tile:nth-child(6) { animation-delay:0.24s }
 
-  /* Grid tile photo — show face in upper third */
-  .tile-photo-wrap { position: relative; width: 100%; padding-top: 110%; background: var(--surface2); overflow: hidden; }
-  .tile-photo-wrap img {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center 15%;  /* face centred, not cropped at top */
-    display: block;
-  }
-  .tile-initials {
-    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;
-    color: var(--green); background: var(--surface2);
-  }
+  .tile-photo-wrap { position: relative; width: 100%; padding-top: 130%; background: var(--surface2); overflow: hidden; }
+  .tile-photo-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 10%; display: block; }
+  .tile-initials { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; color: var(--green); background: var(--surface2); }
   .tile-photo-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 30%; background: linear-gradient(to top, var(--surface) 0%, transparent 100%); }
-
   .tile-green-bar { height: 2px; background: var(--green); opacity: 0.8; }
   .tile-info { padding: 9px 10px 11px; }
   .tile-name { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 3px; }
@@ -94,7 +81,6 @@
   .tile-cta-text { font-size: 9px; font-weight: 600; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; }
   .tile-cta-arrow { font-size: 14px; color: var(--green); }
 
-  /* CONTEXT TILE */
   .context-tile {
     grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--border);
     border-radius: 10px; padding: 14px 16px; cursor: pointer;
@@ -111,7 +97,6 @@
 
   .footer { text-align: center; padding: 6px 0 8px; font-size: 9px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; flex-shrink: 0; background: var(--bg); }
 
-  /* DETAIL */
   #detailScreen .detail-header {
     background: var(--surface); display: flex; align-items: center; gap: 10px;
     padding: 12px 14px; border-bottom: 1px solid var(--border);
@@ -134,16 +119,10 @@
 
   #detailScreen .scroll-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 
-  /* Detail photo — tall crop, face centred */
-  .detail-photo-wrap { position: relative; width: 100%; height: 260px; overflow: hidden; background: var(--surface2); }
-  .detail-photo {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center 20%;  /* show face, not top of head */
-    display: block;
-  }
+  .detail-photo-wrap { position: relative; width: 100%; height: 300px; overflow: hidden; background: var(--surface2); }
+  .detail-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; display: block; }
   .detail-photo-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--bg) 0%, transparent 100%); }
-  .detail-photo-fallback { width: 100%; height: 260px; display: flex; align-items: center; justify-content: center; background: var(--surface2); font-family: 'Space Grotesk', sans-serif; font-size: 64px; font-weight: 700; color: var(--green); }
+  .detail-photo-fallback { width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; background: var(--surface2); font-family: 'Space Grotesk', sans-serif; font-size: 64px; font-weight: 700; color: var(--green); }
 
   .detail-body { padding: 18px 18px 44px; }
   .section-label { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
@@ -213,61 +192,107 @@ const people = [
   {
     id:"kinew", name:"Wab Kinew", initials:"WK", shortTitle:"Premier",
     title:"Premier of Manitoba",
-    context:"The ultimate decision-maker. Manitoba's labour leadership is asking him to meet directly with Consensus Core to properly consider the merits of this project. Officials and ministers may have misconceptions that are causing the project to be misjudged.",
-    hook:"Manitoba has watched too many investments of this scale land in other provinces. This one wants to be here. A direct conversation with the Premier is the right next step to ensure it gets the full consideration it deserves.",
-    points:["Labour leadership has met with Consensus Core's executive team and is confident this project is right for Manitoba.","This is an Industrial Campus with a modern AI Data Centre as its foundation — not a cryptocurrency project.","The project offers peaker plant-like grid support to Manitoba Hydro's network.","Dedicated pathways for Indigenous worker participation are built into the project structure."]
+    context:"Consensus Core is an NVIDIA-partnered AI infrastructure company building one of Canada's most significant industrial campuses in Manitoba. We have chosen this province deliberately — for its energy advantage, its geography, and its potential to lead on Canadian data sovereignty. We are asking for one meeting with the Premier to make our case directly.",
+    hook:"We are not asking for a subsidy or a regulatory shortcut. We are asking for one hour to show the Premier why this project belongs in Manitoba and why now is the moment to move.",
+    points:[
+      "Consensus Core is an NVIDIA Cloud Partner — this is institutional-grade AI infrastructure, not a speculative venture.",
+      "We have committed to $1.5 billion in initial investment, scalable to $4 billion. That capital wants to be in Manitoba.",
+      "Our campus returns up to 500 MW to the Manitoba Hydro grid during peak winter demand — we are a grid asset, not a liability.",
+      "We advance Canadian data sovereignty: Canadian data, on Canadian soil, powered by Canadian clean energy.",
+      "Labour is in the room tonight with the same ask. We are aligned. The project is ready. We need the meeting."
+    ]
   },
   {
     id:"sala", name:"Adrien Sala", initials:"AS", shortTitle:"Finance & Hydro",
     title:"Minister of Finance & Hydro",
-    context:"Manages the tension between high demand for Manitoba Hydro capacity and limited grid supply. Every new large load is scrutinized through that lens. He needs to see this project as a solution, not another problem.",
-    hook:"The project optimizes Manitoba Hydro grid capacity — paying domestic prices for power currently exported at depressed rates and contributing additional capacity at peak times when Manitobans need it most.",
-    points:["Offers peaker plant-like grid support — a grid asset, not a passive load.","Pays domestic prices for power currently being exported at depressed rates.","Contributes additional capacity at peak demand times.","Uses a modern closed-loop cooling solution — never consumes water in its cooling system.","Initial investment of $1.5 billion, scalable to $4 billion at full buildout."]
+    context:"Minister Sala is managing real pressure on Manitoba Hydro capacity. Every new large load gets scrutinized — and it should. Our pitch to him is that we are not a conventional large load. We participate in the grid in both directions.",
+    hook:"When Manitoba needs power, we contribute to the grid. When Manitoba has surplus, we absorb it. We also generate on-site and never consume water in cooling. We are a grid participant, not just a load.",
+    points:[
+      
+      "On-site natural gas generation with carbon capture means we do not lean entirely on the grid.",
+      "We can return up to 500 MW during peak winter demand — two-way grid support.",
+      "We pay domestic prices for power currently being exported at depressed rates. That is new revenue for Hydro.",
+      "Closed-loop cooling: we consume no water in our cooling system.",
+      "Over 1,200 construction jobs across a four-year phased build.",
+      "500 to 800 permanent positions in data, agriculture, and manufacturing.",
+      "Initial investment of $1.5 billion, scalable to $4 billion at full buildout.",
+      "The ask: his support for a direct meeting between Consensus Core and Premier Kinew."
+    ]
   },
   {
     id:"moses", name:"Jamie Moses", initials:"JM", shortTitle:"Economic Dev.",
     title:"Minister of Economic Development, Investment, Trade & Natural Resources",
-    context:"Oversees major industrial investments and is attentive to regional economic distribution. Moves at the scale of large capital. The job and investment numbers on this file are directly in his lane.",
-    hook:"Over 1,200 construction jobs across a four-year phased build. Between 500 and 800 permanent data, agriculture, and manufacturing positions once the campus is operational. These numbers are real.",
-    points:["Initial investment of $1.5 billion, scalable to $4 billion at full buildout.","Over 1,200 construction jobs across a four-year phased build.","500 to 800 permanent positions in data, agriculture, and manufacturing.","Committed to $25 to $40 million in annual local spending in the industrial campus.","Will contribute year-round produce for Manitoba's agri-food sector.","Manitoba has watched too many investments of this scale land in other provinces. This one wants to be here."]
+    context:"Minister Moses oversees the files where investment at this scale lives. He understands what a $4 billion industrial commitment means for a regional economy. We want to build this in Manitoba and we are asking for the meeting that lets us make that case to the Premier.",
+    hook:"We want to be here. We are asking the province to say yes — and to give us the meeting where we can answer whatever questions stand between us and that answer.",
+    points:[
+      "Initial investment of $1.5 billion, with a clear path to $4 billion at full buildout.",
+      "Over 1,200 construction jobs across a four-year phased build — real work, real wages.",
+      "500 to 800 permanent positions in data operations, agriculture, and manufacturing.",
+      "$25 to $40 million in committed annual local spending once the campus is operational.",
+      "Year-round greenhouse food production as part of our carbon reuse model.",
+      "The ask: his voice in securing a meeting between Consensus Core and the Premier."
+    ]
   },
   {
     id:"moroz", name:"Mike Moroz", initials:"MM", shortTitle:"Innovation",
     title:"Minister of Innovation & New Technology",
-    context:"Leads the Sovereign AI mandate and is looking for Manitoba success stories in the tech sector. Needs proof of concept — physical infrastructure that makes provincial AI ambitions real rather than aspirational.",
-    hook:"This is an Industrial Campus with a modern AI Data Centre at its foundation, serving growing Canadian and international demand. Position it as the anchor of Manitoba's emerging AI infrastructure.",
-    points:["Modern AI Data Centre serving Canadian and international demand — not a crypto operation.","Closed-loop cooling system: no water consumption in the cooling process.","Dedicated pathways for Indigenous worker participation.","Scalable to $4 billion — the kind of anchor investment that attracts further tech sector activity.","Advances Canadian data sovereignty by keeping data on Canadian soil."]
+    context:"We met with Minister Moroz on April 10. He is engaged on the project's potential but raised concerns about complaints from neighbours near the Île des Chênes site. Those concerns are real and we are taking them seriously — local engagement is already underway. The Minister's support for a Premier meeting should not wait for that process to conclude.",
+    hook:"Local concerns are part of the process and we are working through them. But the question of whether Manitoba wants this investment is a different question — and it is the one that needs to be answered at the Premier level.",
+    points:[
+      "We met with Minister Moroz on April 10. He raised neighbour complaints near the Île des Chênes site.",
+      "We have heard those concerns and local engagement is already underway. That process takes time.",
+      "The Premier meeting is about the investment case — it does not depend on local complaints being resolved first.",
+      "We contribute power to Manitoba's grid when demand is high and draw from it when there is surplus.",
+      "Consensus Core is an NVIDIA Cloud Partner — this is institutional AI infrastructure, not a speculative venture.",
+      "Our campus keeps Canadian data on Canadian soil, powered by Canadian clean energy.",
+      "The ask: his support for a direct meeting between Consensus Core and Premier Kinew."
+    ]
   },
   {
     id:"rosner", name:"Mark Rosner", initials:"MR", shortTitle:"Chief of Staff",
     title:"Chief of Staff to the Premier",
-    context:"The engine room of the government. Manages political risk and high-stakes cabinet priorities. His read on risk and timing governs how this file moves. He needs a clean narrative before it reaches the Premier.",
-    hook:"Our members have seen projects like this stall because no one with authority took ownership of moving them forward. Give Rosner the reason to flag this as low-risk, high-reward — and make it easy for him to do so.",
-    points:["Labour leadership is actively backing this project and asking for a Premier meeting — that is political cover.","This is a union project. Consensus Core has committed to Manitoba's building trades for construction and permanent roles.","Not crypto: an Industrial Campus with an AI Data Centre as its foundation.","Grid-positive: peaker plant-like support, not just a large load.","1,200+ construction jobs and 500 to 800 permanent positions — defensible, real numbers.","Officials may have misconceptions. A direct conversation corrects the record."]
+    context:"Mark Rosner controls access and manages risk for the Premier. Our pitch to him is simple: this meeting is low-risk and high-upside. Labour is already in the room asking for it. The project is credible. The only question is whether the Premier hears it from us directly.",
+    hook:"We are not asking the Premier to approve anything. We are asking for one hour to answer his questions. Labour is here tonight with the same ask. The conditions for a productive meeting are in place.",
+    points:[
+      "Labour leadership is here tonight asking for the same meeting — the project has broad coalition support.",
+      "Consensus Core is an NVIDIA Cloud Partner. This is not a speculative pitch.",
+      "The project is categorically different from crypto mining: grid-positive, carbon-captured, job-creating.",
+      "There is no ask for subsidy or regulatory override — just the meeting.",
+      "Officials may have formed a view of this project based on incomplete information. One conversation corrects that.",
+      "The ask: one hour with Premier Kinew for Consensus Core's executive team."
+    ]
   },
   {
     id:"modha", name:"Pratik Modha", initials:"PM", shortTitle:"Business Council",
     title:"Secretary, Premier's Business & Jobs Council",
-    context:"BC NDP veteran. Bridges government strategy and the business community. Focused on tangible, measurable workforce outcomes. Numbers and long-term pipelines matter more to him than announcement-level investment figures.",
-    hook:"Years of steady, well-paid union work in a challenging market. A long-term training pipeline. Dedicated pathways for Indigenous worker participation. These are the metrics he is looking for.",
-    points:["This is a union project — Manitoba's building trades fill construction and permanent roles.","Over 1,200 construction jobs across a four-year phased build.","500 to 800 permanent positions in data, agriculture, and manufacturing.","Dedicated pathways for Indigenous worker participation.","Committed to $25 to $40 million in annual local spending.","Years of steady, well-paid union work in a challenging market."]
+    context:"Pratik Modha connects business investment to government strategy. He understands that announcements without workforce pipelines are incomplete — and that the reverse is equally true. We come with both.",
+    hook:"We are not here with a vision deck. We have a site, an NVIDIA partnership, a labour commitment, and a grid arrangement that works in both directions. The workforce pipeline is part of the plan from day one.",
+    points:[
+      "This is a union project. Manitoba's building trades fill construction and permanent roles.",
+      "Over 1,200 construction jobs across a four-year build — sustained work, not a single pour.",
+      "500 to 800 permanent positions with a long-term workforce development plan attached.",
+      "Dedicated pathways for Indigenous worker participation built into the project structure.",
+      "$25 to $40 million in annual local spending — the campus sustains a regional supply chain.",
+      "The ask: his support for getting Consensus Core in front of Premier Kinew."
+    ]
   }
 ];
 
 const projectFacts = [
-  "Manitoba's labour leadership is asking Premier Kinew to meet with Consensus Core directly.",
-  "This is an Industrial Campus with a modern AI Data Centre as its foundation — not a cryptocurrency project.",
+  "Consensus Core is an NVIDIA Cloud Partner building AI infrastructure at institutional scale.",
+  "We have selected Manitoba deliberately — for clean energy, geography, and data sovereignty potential.",
   "Initial investment of $1.5 billion, scalable to $4 billion at full buildout.",
-  "Offers peaker plant-like grid support to Manitoba Hydro's network.",
-  "Pays domestic prices for power currently exported at depressed rates.",
-  "Closed-loop cooling: the project never consumes water in its cooling system.",
+  "Up to 500 MW of two-way grid support returned to Manitoba Hydro during peak demand.",
+  
+  "Closed-loop cooling: zero water consumption in our cooling system.",
+  "On-site natural gas generation with carbon capture and reuse.",
+  "Year-round greenhouse food production as part of the carbon reuse model.",
   "Over 1,200 construction jobs across a four-year phased build.",
   "500 to 800 permanent positions in data, agriculture, and manufacturing.",
-  "Committed to $25 to $40 million in annual local spending.",
-  "Year-round produce for Manitoba's agri-food sector.",
+  "$25 to $40 million in committed annual local spending.",
   "Dedicated pathways for Indigenous worker participation.",
-  "Union project — committed to Manitoba's building trades.",
-  "Manitoba has watched too many investments of this scale land in other provinces. This one wants to be here."
+  "This is a union project. Manitoba's building trades fill construction and permanent roles.",
+  "The ask tonight: one meeting between Consensus Core's executive team and Premier Kinew."
 ];
 
 function buildGrid() {
@@ -294,7 +319,7 @@ function buildGrid() {
   const ctx = document.createElement('div');
   ctx.className = 'context-tile';
   ctx.onclick = openContext;
-  ctx.innerHTML = `<div><div class="context-tile-eyebrow">Quick Reference</div><div class="context-tile-heading">Project at a Glance</div><div class="context-tile-sub">Key facts for any conversation</div></div><div class="context-tile-arrow">›</div>`;
+  ctx.innerHTML = `<div><div class="context-tile-eyebrow">Quick Reference</div><div class="context-tile-heading">Project at a Glance</div><div class="context-tile-sub">The case for the meeting</div></div><div class="context-tile-arrow">›</div>`;
   grid.appendChild(ctx);
 }
 
@@ -313,10 +338,10 @@ function openPerson(id) {
     ? `<div class="detail-photo-wrap"><img class="detail-photo" src="${src}" alt="${p.name}" onerror="this.parentElement.innerHTML='<div class=\'detail-photo-fallback\'>${p.initials}</div>'"><div class="detail-photo-overlay"></div></div>`
     : `<div class="detail-photo-fallback">${p.initials}</div>`;
   document.getElementById('dBody').innerHTML = `
-    <div class="section-label">Who They Are</div>
+    <div class="section-label">Our Pitch to Them</div>
     <div class="detail-role-text">${p.context}</div>
-    <div class="hook-block"><div class="hook-label">Lead Message</div><div class="hook-text">${p.hook}</div></div>
-    <div class="section-label">Talking Points</div>
+    <div class="hook-block"><div class="hook-label">The Opening Line</div><div class="hook-text">${p.hook}</div></div>
+    <div class="section-label">What to Cover</div>
     <ul class="points-list">${p.points.map(pt => `<li>${pt}</li>`).join('')}</ul>`;
   showDetail();
 }
@@ -326,10 +351,10 @@ function openContext() {
   document.getElementById('dTitle').textContent = 'Île des Chênes Industrial Campus';
   document.getElementById('dPhotoArea').innerHTML = '';
   document.getElementById('dBody').innerHTML = `
-    <div class="section-label">Key Facts</div>
+    <div class="section-label">The Case for the Meeting</div>
     <ul class="context-fact-list">${projectFacts.map(f => `<li>${f}</li>`).join('')}</ul>
     <br>
-    <div class="hook-block"><div class="hook-label">Core Distinction from Crypto Mining</div><div class="hook-text">Industrial Campus. AI Data Centre foundation. Grid balancing asset. Union jobs. Indigenous participation pathways. Year-round food production. Manitoba has watched too many investments of this scale land elsewhere. This one wants to be here.</div></div>`;
+    <div class="hook-block"><div class="hook-label">Tonight's Ask</div><div class="hook-text">One meeting. One hour. Consensus Core's executive team and Premier Kinew. Labour is asking for the same thing. The project is ready. Manitoba has watched too many investments of this scale land in other provinces. This one wants to be here.</div></div>`;
   showDetail();
 }
 
